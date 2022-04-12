@@ -4,6 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ShellComponent } from './shell/shell.component';
 import { BlankComponent } from './views/blank/blank.component';
+import { FlashcardComponent } from './views/flashcard/flashcard.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+
 const routes: Routes = [
   {
     path: 'app',
@@ -25,8 +29,18 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ShellComponent, BlankComponent],
-  imports: [BrowserModule, RouterModule.forRoot(routes)],
+  declarations: [
+    AppComponent,
+    ShellComponent,
+    BlankComponent,
+    FlashcardComponent,
+  ],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    MatCardModule,
+    MatButtonModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
