@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Flashcard } from 'src/app/shared/interfaces';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FlashcardDetailComponent } from '../flashcard-detail/flashcard-detail.component';
 
 @Component({
   selector: 'app-flashcard',
@@ -14,9 +16,15 @@ export class FlashcardComponent implements OnInit {
   public url: string = this.flashcard.url;
   public previewUrl: string = this.generatePreviewUrl();
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
+
+  openDialog() {
+    this.dialog.open(FlashcardDetailComponent, {
+      data: this.flashcard,
+    });
+  }
 
   private generatePreviewUrl(): string {
     return `https://i.ytimg.com/vi/${this.url.slice(
