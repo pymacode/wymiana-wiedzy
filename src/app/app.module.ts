@@ -41,6 +41,7 @@ const routes: Routes = [
     BlankComponent,
     FlashcardComponent,
     FlashcardDetailComponent,
+    WorkspaceComponent,
   ],
   imports: [
     BrowserModule,
