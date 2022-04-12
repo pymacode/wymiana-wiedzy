@@ -7,6 +7,8 @@ import { BlankComponent } from './views/blank/blank.component';
 import { FlashcardComponent } from './views/flashcard/flashcard.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { FlashcardDetailComponent } from './views/flashcard-detail/flashcard-detail.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const routes: Routes = [
   {
@@ -34,12 +36,14 @@ const routes: Routes = [
     ShellComponent,
     BlankComponent,
     FlashcardComponent,
+    FlashcardDetailComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     MatCardModule,
     MatButtonModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
