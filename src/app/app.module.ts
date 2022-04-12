@@ -13,6 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { WorkspaceComponent } from './views/workspace/workspace.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {
@@ -41,6 +42,7 @@ const routes: Routes = [
     BlankComponent,
     FlashcardComponent,
     FlashcardDetailComponent,
+    WorkspaceComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +53,7 @@ const routes: Routes = [
     MatDividerModule,
     MatGridListModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
