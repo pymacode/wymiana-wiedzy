@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Input, OnInit, Inject } from '@angular/core';
+import { Flashcard } from 'src/app/shared/interfaces';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-flashcard-detail',
@@ -7,7 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./flashcard-detail.component.scss'],
 })
 export class FlashcardDetailComponent implements OnInit {
-  constructor(public dialog: MatDialog) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public card: Flashcard) {}
 
   ngOnInit(): void {}
 }

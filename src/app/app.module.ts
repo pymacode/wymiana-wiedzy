@@ -9,6 +9,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { FlashcardDetailComponent } from './views/flashcard-detail/flashcard-detail.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 const routes: Routes = [
   {
@@ -44,6 +46,8 @@ const routes: Routes = [
     MatCardModule,
     MatButtonModule,
     MatDialogModule,
+    MatDividerModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
