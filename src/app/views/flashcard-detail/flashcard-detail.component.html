@@ -2,40 +2,25 @@
 <h1 mat-dialog-title>{{card.title}}</h1>
 <h3><span *ngFor="let tag of card.tags">#{{tag}} </span></h3>
 <mat-divider></mat-divider>
-<div mat-dialog-content>
-  <mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile>
-      <div class="container" style="margin-top: 10%;">
-        <div *ngFor="let prop of card.properties" style="display: flex; justify-content: space-around; margin-top: 5%;">
-          <span class="propName">{{ prop.name }}:</span> <a mat-stroked-button color="accent">{{ prop.value }}</a>
-        </div>
-      </div>
-      <mat-divider></mat-divider>
-
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <div class="container" style="overflow: auto;">
-        <img [src]="card.previewUrl" style="height: 100%; width: auto; ">
-      </div>
-
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <div class="container">
-        <h2 style="text-align: center; font-size: 28px;">Backlinks</h2>
+<div class="row">
+  <div class="col"><div *ngFor="let prop of card.properties" style="display: flex; justify-content: space-around; margin-top: 5%;">
+    <span class="propName">{{ prop.name }}:</span> <a mat-stroked-button color="accent">{{ prop.value }}</a>
+  </div></div>
+  <div class="col"><img [src]="card.previewUrl" class="img-fluid"></div>
+</div>
+<div class="row mt-5 mb-5">
+  <div class="col">
+    <h2 style="text-align: center; font-size: 28px;">Backlinks</h2>
         <span *ngFor="let backlink of card.backlinks"><button class="backlink" mat-raised-button>{{ backlink.title }}</button></span>
-      </div>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <div class="container">
-        <h2 style="text-align: center; font-size: 28px;">Opis</h2>
+  </div>
+  <div class="col">
+    <h2 style="text-align: center; font-size: 28px;">Opis</h2>
         <p>
           {{card.description}}
         </p>
-      </div>
-    </mat-grid-tile>
-  </mat-grid-list>
-
+  </div>
 </div>
+
 <mat-dialog-actions align="center">
   <a mat-raised-button color="primary" [href]="card.url" target="_blank">ZOBACZ</a>
 </mat-dialog-actions>
