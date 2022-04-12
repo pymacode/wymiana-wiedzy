@@ -1,0 +1,9 @@
+nav {
+  width: 5rem;
+  height: 100%;
+  background-color: antiquewhite;
+
+  @media screen AND (max-width: 768px) {
+    display: none;
+  }
+}

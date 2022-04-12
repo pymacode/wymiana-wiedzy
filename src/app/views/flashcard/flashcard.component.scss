@@ -1,7 +1,12 @@
 .example-card {
   max-width: 300px;
+  min-height: 400px;
+  max-height: 400px;
   background-color: #fffbfe;
   border: 1px solid #79747e;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .example-header-image {

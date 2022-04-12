@@ -1,0 +1,14 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  @media screen AND (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+.filters {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
