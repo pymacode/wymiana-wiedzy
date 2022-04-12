@@ -19,6 +19,7 @@ export interface Flashcard {
   tags: string[];
   properties: Property[];
   url: string;
+  previewUrl: string;
   description: string;
   backlinks: Flashcard[];
 }

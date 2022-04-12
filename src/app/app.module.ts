@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlashcardComponent } from './views/flashcard/flashcard.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { WorkspaceComponent } from './views/workspace/workspace.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,7 @@ const routes: Routes = [
       { path: 'add-workspace', component: BlankComponent },
       {
         path: 'workspace/:id',
-        component: BlankComponent,
+        component: WorkspaceComponent,
         children: [
           { path: 'add-flashcard', component: BlankComponent },
           { path: 'flashcard/:id', component: BlankComponent },
@@ -35,6 +36,7 @@ const routes: Routes = [
     ShellComponent,
     BlankComponent,
     FlashcardComponent,
+    WorkspaceComponent,
   ],
   imports: [
     BrowserModule,
