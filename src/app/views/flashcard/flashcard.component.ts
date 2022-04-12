@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Flashcard } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-flashcard',
@@ -6,12 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./flashcard.component.scss'],
 })
 export class FlashcardComponent implements OnInit {
-  public title: string =
-    'Introduction To Responsive Design With Angular Material';
-  public tags: string[] = ['#tag', '#tag', '#tag'];
-  public description: string =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.';
-  public url: string = 'https://www.youtube.com/watch?v=_ZDYqYgM8SI';
+  @Input() private flashcard!: Flashcard;
+  public title: string = this.flashcard.title;
+  public tags: string[] = this.flashcard.tags;
+  // ['#tag', '#tag', '#tag'];
+  public description: string = this.flashcard.description;
+  // 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.';
+  public url: string = this.flashcard.url;
+  // 'https://www.youtube.com/watch?v=_ZDYqYgM8SI';
   public previewUrl: string = this.generatePreviewUrl();
 
   constructor() {}
