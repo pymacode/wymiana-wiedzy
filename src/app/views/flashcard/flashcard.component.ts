@@ -9,12 +9,7 @@ import { FlashcardDetailComponent } from '../flashcard-detail/flashcard-detail.c
   styleUrls: ['./flashcard.component.scss'],
 })
 export class FlashcardComponent implements OnInit {
-  @Input() private flashcard!: Flashcard;
-  public title: string = this.flashcard.title;
-  public tags: string[] = this.flashcard.tags;
-  public description: string = this.flashcard.description;
-  public url: string = this.flashcard.url;
-  public previewUrl: string = this.generatePreviewUrl();
+  @Input() flashcard!: Flashcard;
 
   constructor(public dialog: MatDialog) {}
 
@@ -24,11 +19,5 @@ export class FlashcardComponent implements OnInit {
     this.dialog.open(FlashcardDetailComponent, {
       data: this.flashcard,
     });
-  }
-
-  private generatePreviewUrl(): string {
-    return `https://i.ytimg.com/vi/${this.url.slice(
-      this.url.lastIndexOf('=') + 1
-    )}/maxresdefault.jpg`;
   }
 }

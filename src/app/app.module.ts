@@ -12,6 +12,7 @@ import { FlashcardDetailComponent } from './views/flashcard-detail/flashcard-det
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { WorkspaceComponent } from './views/workspace/workspace.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,7 @@ const routes: Routes = [
       { path: 'add-workspace', component: BlankComponent },
       {
         path: 'workspace/:id',
-        component: BlankComponent,
+        component: WorkspaceComponent,
         children: [
           { path: 'add-flashcard', component: BlankComponent },
           { path: 'flashcard/:id', component: BlankComponent },

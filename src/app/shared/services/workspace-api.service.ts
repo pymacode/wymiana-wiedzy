@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { ReplaySubject } from 'rxjs';
 import { Workspace } from '../interfaces';
 
@@ -7,10 +8,8 @@ import { Workspace } from '../interfaces';
   providedIn: 'root',
 })
 export class WorkspaceApiService {
-  workspace: ReplaySubject<Workspace> = new ReplaySubject<Workspace>(1);
-  constructor(private http: HttpClient) {
-    this.getWorkspace('1');
-  }
+  private workspace: ReplaySubject<Workspace> = new ReplaySubject<Workspace>(1);
+  constructor(private http: HttpClient, private router: Router) {}
 
   public get workspace$() {
     return this.workspace.asObservable();
@@ -18,9 +17,21 @@ export class WorkspaceApiService {
 
   public getWorkspace(id: string) {
     this.http
-      .get<Workspace>(`http://localhost:3000/workspaces?id=${id}`)
-      .subscribe((workspace) => {
-        this.workspace.next(workspace);
+      .get<Workspace>(`http://localhost:3000/workspaces/${id}`)
+      .subscribe({
+        next: (workspace) => {
+          workspace.flashcards.forEach(
+            (item) => (item.previewUrl = this.generatePreviewUrl(item.url))
+          );
+          this.workspace.next(workspace);
+        },
+        error: () => this.router.navigate(['/app']),
       });
+  }
+
+  private generatePreviewUrl(url: string): string {
+    return `https://i.ytimg.com/vi/${url.slice(
+      url.lastIndexOf('=') + 1
+    )}/maxresdefault.jpg`;
   }
 }
