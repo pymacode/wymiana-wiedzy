@@ -8,6 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlashcardComponent } from './views/flashcard/flashcard.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { FlashcardDetailComponent } from './views/flashcard-detail/flashcard-detail.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { WorkspaceComponent } from './views/workspace/workspace.component';
 
 const routes: Routes = [
@@ -36,13 +40,16 @@ const routes: Routes = [
     ShellComponent,
     BlankComponent,
     FlashcardComponent,
-    WorkspaceComponent,
+    FlashcardDetailComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     MatCardModule,
     MatButtonModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatGridListModule,
     HttpClientModule,
   ],
   providers: [],
