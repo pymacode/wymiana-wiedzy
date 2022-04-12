@@ -1,11 +1,14 @@
 <div class="filters">
   <h1>Filters here</h1>
 </div>
-<div class="content">
-  <div *ngIf="flashcards$ | async as workspace" class="wrapper">
-    <app-flashcard
+
+<div class="container-fluid">
+  <div *ngIf="flashcards$ | async as workspace" class="row gap-5 d-flex justify-content-center">
+    <div
       *ngFor="let flashcard of workspace.flashcards"
-      [flashcard]="flashcard"
-    ></app-flashcard>
+      class="col-xl-3 col-md-4 col-sm-12"
+    >
+    <app-flashcard [flashcard]="flashcard"></app-flashcard>
+    </div>
   </div>
 </div>
