@@ -1,33 +1,41 @@
-<button mat-dialog-close class="cls-btn">X</button>
+<!-- <button mat-dialog-close class="cls-btn">X</button> -->
 <h1 mat-dialog-title>{{card.title}}</h1>
-<h3><span *ngFor="let tag of card.tags">{{tag}} </span></h3>
+<h3><span *ngFor="let tag of card.tags">#{{tag}} </span></h3>
 <mat-divider></mat-divider>
 <div mat-dialog-content>
-  <mat-grid-list cols="2" rowHeight="1:1">
+  <mat-grid-list cols="2" rowHeight="2:1">
     <mat-grid-tile>
-      <div>
-        <div *ngFor="let prop of card.properties">
-          <span>{{ prop.name }}  {{ prop.value }}</span>
+      <div class="container" style="margin-top: 10%;">
+        <div *ngFor="let prop of card.properties" style="display: flex; justify-content: space-around; margin-top: 5%;">
+          <span class="propName">{{ prop.name }}:</span> <a mat-stroked-button color="accent">{{ prop.value }}</a>
         </div>
       </div>
       <mat-divider></mat-divider>
-      <div>
-        <h2>Backlinks</h2>
-        <span *ngFor="let backlink of card.backlinks">{{ backlink.title }}</span>
+
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="container" style="overflow: auto;">
+        <img [src]="card.previewUrl" style="height: 100%; width: auto; ">
+      </div>
+
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="container">
+        <h2 style="text-align: center; font-size: 28px;">Backlinks</h2>
+        <span *ngFor="let backlink of card.backlinks"><button class="backlink" mat-raised-button>{{ backlink.title }}</button></span>
       </div>
     </mat-grid-tile>
     <mat-grid-tile>
-      <div>
-        <img [src]="card.previewUrl">
-      </div>
-      <div>
+      <div class="container">
+        <h2 style="text-align: center; font-size: 28px;">Opis</h2>
         <p>
           {{card.description}}
         </p>
       </div>
     </mat-grid-tile>
   </mat-grid-list>
-  <mat-dialog-actions align="center">
-      <a mat-raised-button color="primary" [href]="card.url" target="_blank">ZOBACZ</a>
-  </mat-dialog-actions>
+
 </div>
+<mat-dialog-actions align="center">
+  <a mat-raised-button color="primary" [href]="card.url" target="_blank">ZOBACZ</a>
+</mat-dialog-actions>

@@ -18,6 +18,8 @@ export class FlashcardComponent implements OnInit {
   openDialog() {
     this.dialog.open(FlashcardDetailComponent, {
       data: this.flashcard,
+      // height: '80%',
+      width: '75%',
     });
   }
 }
