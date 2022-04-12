@@ -1,6 +1,9 @@
-<div *ngIf="flashcards$ | async as workspace" class="wrapper">
-  <app-flashcard
-    *ngFor="let flashcard of workspace.flashcards"
-    [flashcard]="flashcard"
-  ></app-flashcard>
+<div class="filters"></div>
+<div class="content">
+  <div *ngIf="flashcards$ | async as workspace" class="wrapper">
+    <app-flashcard
+      *ngFor="let flashcard of workspace.flashcards"
+      [flashcard]="flashcard"
+    ></app-flashcard>
+  </div>
 </div>
