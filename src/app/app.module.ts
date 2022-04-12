@@ -8,6 +8,16 @@ import { ShellComponent } from './shell/shell.component';
 import { BlankComponent } from './views/blank/blank.component';
 import { HeaderComponent } from './shell/header/header.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FlashcardComponent } from './views/flashcard/flashcard.component';
+import { MatCardModule } from '@angular/material/card';
+import { FlashcardDetailComponent } from './views/flashcard-detail/flashcard-detail.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { WorkspaceComponent } from './views/workspace/workspace.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 const routes: Routes = [
   {
     path: 'app',
@@ -16,7 +26,7 @@ const routes: Routes = [
       { path: 'add-workspace', component: BlankComponent },
       {
         path: 'workspace/:id',
-        component: BlankComponent,
+        component: WorkspaceComponent,
         children: [
           { path: 'add-flashcard', component: BlankComponent },
           { path: 'flashcard/:id', component: BlankComponent },
@@ -35,12 +45,22 @@ const routes: Routes = [
     BlankComponent,
     HeaderComponent,
     NavigationComponent,
+    FlashcardComponent,
+    FlashcardDetailComponent,
+    WorkspaceComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     MatIconModule,
     MatButtonModule,
+    MatCardModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatGridListModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
