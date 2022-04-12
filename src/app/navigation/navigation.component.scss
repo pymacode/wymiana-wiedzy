@@ -2,7 +2,8 @@ nav {
   width: 5rem;
   height: 100%;
   background-color: antiquewhite;
-  position: fixed;
-  left: 0;
-  z-index: 100000;
+
+  @media screen AND (max-width: 768px) {
+    display: none;
+  }
 }
