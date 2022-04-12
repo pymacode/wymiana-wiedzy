@@ -18,6 +18,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { WorkspaceComponent } from './views/workspace/workspace.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconPenComponent } from './shared/icons/icon-pen/icon-pen.component';
+import { NetworkGraphComponent } from './views/network-graph/network-graph.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,7 @@ const routes: Routes = [
     FlashcardDetailComponent,
     WorkspaceComponent,
     IconPenComponent,
+    NetworkGraphComponent,
   ],
   imports: [
     BrowserModule,
