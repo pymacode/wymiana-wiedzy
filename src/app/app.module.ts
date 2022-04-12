@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ShellComponent } from './shell/shell.component';
 import { BlankComponent } from './views/blank/blank.component';
+import { HttpClientModule } from '@angular/common/http';
 import { FlashcardComponent } from './views/flashcard/flashcard.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -40,6 +41,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     MatCardModule,
     MatButtonModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
