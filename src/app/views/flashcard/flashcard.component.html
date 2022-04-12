@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{ title }}</mat-card-title>
+      <mat-card-subtitle
+        ><span *ngFor="let tag of tags">#{{ tag }} </span></mat-card-subtitle
+      >
+    </mat-card-header>
+    <img mat-card-image [src]="previewUrl" alt="Photo of a Shiba Inu" />
+    <mat-card-content>
+      <p>
+        <span>{{ description | slice: 0:79 }}</span
+        ><span *ngIf="description.length > 80">...</span>
+      </p>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button>SZCZEGÓŁY</button>
+      <a mat-raised-button color="primary" [href]="url" target="_blank"
+        >ZOBACZ</a
+      >
+    </mat-card-actions>
+  </mat-card>
+</mat-card>
