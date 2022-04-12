@@ -2,13 +2,13 @@
   <h1>Filters here</h1>
 </div>
 
-<div class="container-fluid">
-  <div *ngIf="flashcards$ | async as workspace" class="row gap-5 d-flex justify-content-center">
+<div class="container-fluid mb-5">
+  <div *ngIf="flashcards$ | async as workspace" class="row gap-xxl-5 gap-xl-3 gap-md-4 gap-4 d-flex justify-content-center">
     <div
       *ngFor="let flashcard of workspace.flashcards"
-      class="col-xl-3 col-md-4 col-sm-12"
+      class="col-xl-3 col-md-5 col-sm-12 "
     >
-    <app-flashcard [flashcard]="flashcard"></app-flashcard>
+    <app-flashcard [flashcard]="flashcard" class="d-flex justify-content-center"></app-flashcard>
     </div>
   </div>
 </div>

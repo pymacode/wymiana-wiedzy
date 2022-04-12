@@ -24,6 +24,8 @@ import { ChipsComponent } from './views/add-flashcard/chips/chips.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
+import { IconPenComponent } from './shared/icons/icon-pen/icon-pen.component';
+
 const routes: Routes = [
   {
     path: 'app',
@@ -53,6 +55,7 @@ const routes: Routes = [
     WorkspaceComponent,
     AddFlashcardComponent,
     ChipsComponent,
+    IconPenComponent,
   ],
   imports: [
     BrowserModule,
