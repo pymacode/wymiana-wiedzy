@@ -17,6 +17,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { WorkspaceComponent } from './views/workspace/workspace.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { IconPenComponent } from './shared/icons/icon-pen/icon-pen.component';
 
 const routes: Routes = [
   {
@@ -48,6 +49,7 @@ const routes: Routes = [
     FlashcardComponent,
     FlashcardDetailComponent,
     WorkspaceComponent,
+    IconPenComponent,
   ],
   imports: [
     BrowserModule,
