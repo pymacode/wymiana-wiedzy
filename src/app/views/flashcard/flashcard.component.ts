@@ -10,11 +10,8 @@ export class FlashcardComponent implements OnInit {
   @Input() private flashcard!: Flashcard;
   public title: string = this.flashcard.title;
   public tags: string[] = this.flashcard.tags;
-  // ['#tag', '#tag', '#tag'];
   public description: string = this.flashcard.description;
-  // 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.';
   public url: string = this.flashcard.url;
-  // 'https://www.youtube.com/watch?v=_ZDYqYgM8SI';
   public previewUrl: string = this.generatePreviewUrl();
 
   constructor() {}
