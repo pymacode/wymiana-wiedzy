@@ -1,10 +1,10 @@
-<app-header></app-header>
+<app-header style="position: fixed; z-index: 10;"></app-header>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-1 navigation">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-1 d-sm-none d-md-block navigation">
       <app-navigation></app-navigation>
     </div>
-    <div class="col-11 content">
+    <div class="col-12 col-md-11 content">
       <router-outlet></router-outlet>
     </div>
   </div>
