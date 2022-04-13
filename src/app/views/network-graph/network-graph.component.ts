@@ -8,11 +8,13 @@ import {
 import 'anychart';
 import { Flashcard } from 'src/app/shared/interfaces';
 import { WorkspaceApiService } from 'src/app/shared/services/workspace-api.service';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FlashcardDetailComponent } from '../flashcard-detail/flashcard-detail.component';
 
 export interface nodeDB {
   nodes: {
     id: string;
-    // link: string;
+    link: string;
   }[];
   edges: { from: string; to: string }[];
 }
@@ -92,11 +94,14 @@ export class NetworkGraphComponent implements OnInit {
 
   chart!: anychart.charts.Graph;
 
-  constructor(private workspaceApi: WorkspaceApiService) {}
+  constructor(
+    private workspaceApi: WorkspaceApiService,
+    public dialog: MatDialog
+  ) {}
 
   Parse(flashcards: Flashcard[]) {
     flashcards.forEach((card) => {
-      this.data2.nodes.push({ id: card.title });
+      this.data2.nodes.push({ id: card.title, link: card.url });
       // let nodeObj = { id: '' };
       // nodeObj.id = card.title;
 
@@ -113,7 +118,7 @@ export class NetworkGraphComponent implements OnInit {
       // console.log(workspace);
 
       this.flashcards = workspace.flashcards;
-      console.log(this.flashcards);
+      // console.log(this.flashcards);
 
       this.Parse(workspace.flashcards);
       console.log(this.data2);
@@ -133,7 +138,7 @@ export class NetworkGraphComponent implements OnInit {
       this.chart
         .labels()
         .format(
-          '<a href="https://google.com" style="margin-left: auto; ">{%id}</a>'
+          `<a href="{%link}" style="margin-left: auto;" target="_blank">{%id}</a>`
         );
       this.chart.nodes().labels().fontSize(6);
 
