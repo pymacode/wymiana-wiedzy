@@ -39,6 +39,7 @@ const routes: Routes = [
         path: 'workspace/:id',
         component: WorkspaceComponent,
       },
+      { path: 'graph/:id', component: NetworkGraphComponent },
     ],
   },
   { path: '**', redirectTo: '/app' },
