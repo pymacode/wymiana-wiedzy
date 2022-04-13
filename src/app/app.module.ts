@@ -17,6 +17,13 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { WorkspaceComponent } from './views/workspace/workspace.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddFlashcardComponent } from './views/add-flashcard/add-flashcard.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatChipsModule } from '@angular/material/chips';
+import { ChipsComponent } from './views/add-flashcard/chips/chips.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
 import { IconPenComponent } from './shared/icons/icon-pen/icon-pen.component';
 
 const routes: Routes = [
@@ -28,10 +35,6 @@ const routes: Routes = [
       {
         path: 'workspace/:id',
         component: WorkspaceComponent,
-        children: [
-          { path: 'add-flashcard', component: BlankComponent },
-          { path: 'flashcard/:id', component: BlankComponent },
-        ],
       },
     ],
   },
@@ -49,6 +52,8 @@ const routes: Routes = [
     FlashcardComponent,
     FlashcardDetailComponent,
     WorkspaceComponent,
+    AddFlashcardComponent,
+    ChipsComponent,
     IconPenComponent,
   ],
   imports: [
@@ -63,6 +68,11 @@ const routes: Routes = [
     MatGridListModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatChipsModule,
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

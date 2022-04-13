@@ -1,0 +1,218 @@
+<!-- <form
+  class="container-fluid"
+  [formGroup]="flashcardGroup"
+  (ngSubmit)="submitForm()"
+>
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+      <mat-form-field class="input__title">
+        <mat-label>Tytuł</mat-label>
+        <input matInput formControlName="title" />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 d-flex justify-content-center">
+      <div class="row">
+        <div class="col-12">
+          <app-chips></app-chips>
+        </div>
+        <div
+          *ngFor="let property of properties$ | async"
+          class="col d-flex justify-content-center"
+          formGroupName="properties"
+        >
+          <mat-form-field class="select__first" appearance="fill">
+            <mat-label>{{ property.name }}</mat-label>
+            <mat-select [formControlName]="property.name">
+              <mat-option
+                *ngFor="let opt of property.value; let i = index"
+                [value]="opt"
+                >{{ opt }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <mat-form-field>
+            <mat-label>External link</mat-label>
+            <input matInput formControlName="url" />
+          </mat-form-field>
+        </div>
+        <div class="col d-flex justify-content-center">
+          <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="col d-flex justify-content-center">
+          <mat-form-field class="select__first" appearance="fill">
+            <mat-label>Link with</mat-label>
+            <mat-select (selectionChange)="addBacklink($event.value)">
+              <mat-option
+                *ngFor="let flashcard of flashcards$ | async"
+                [value]="flashcard"
+                >{{ flashcard.title }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <mat-chip-list
+          *ngIf="backlinks && backlinks.length > 0"
+          class="row d-flex justify-content-center"
+        >
+          <p>Connect with:</p>
+          <mat-chip
+            *ngFor="let flashcard of backlinks"
+            class="col-12 d-flex justify-content-center"
+            (removed)="removeBacklink(flashcard)"
+            >{{ flashcard.title }}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button></mat-chip
+          >
+        </mat-chip-list>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 50px">
+    <div class="col-12 d-flex justify-content-end">
+      <button type="submit">Dodaj</button>
+    </div>
+  </div>
+</form> -->
+
+<h1 mat-dialog-title align="center">New flashcard</h1>
+
+<mat-dialog-content>
+  <div class="container content">
+    <form
+      class="container-fluid"
+      [formGroup]="flashcardGroup"
+      (ngSubmit)="submitForm()"
+    >
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+          <mat-form-field class="input__title">
+            <mat-label>Tytuł</mat-label>
+            <input matInput formControlName="title" />
+            <mat-error
+              *ngIf="flashcardGroup.controls['title'].hasError('required')"
+              >To pole jest wymagane</mat-error
+            >
+            <mat-error
+              *ngIf="flashcardGroup.controls['title'].hasError('minlength')"
+              >Minimum 10 znaków</mat-error
+            >
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 d-flex justify-content-center">
+          <div class="row">
+            <div class="col-12">
+              <app-chips></app-chips>
+            </div>
+            <div
+              *ngFor="let property of properties$ | async"
+              class="col d-flex justify-content-center"
+              formGroupName="properties"
+            >
+              <mat-form-field class="select__first">
+                <mat-label>{{ property.name }}</mat-label>
+                <mat-select [formControlName]="property.name">
+                  <mat-option
+                    *ngFor="let opt of property.value; let i = index"
+                    [value]="opt"
+                    >{{ opt }}</mat-option
+                  >
+                </mat-select>
+                <mat-error
+                  *ngIf="
+                    propertiesControls.controls[property.name].hasError(
+                      'required'
+                    )
+                  "
+                  >To pole jest wymagane</mat-error
+                >
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col d-flex justify-content-center">
+              <mat-form-field>
+                <mat-label>External link</mat-label>
+                <input matInput formControlName="url" />
+                <mat-error
+                  *ngIf="flashcardGroup.controls['url'].hasError('required')"
+                  >To pole jest wymagane</mat-error
+                >
+                <mat-error
+                  *ngIf="flashcardGroup.controls['url'].hasError('pattern')"
+                  >Musi być linkiem</mat-error
+                >
+              </mat-form-field>
+            </div>
+            <div class="col d-flex justify-content-center">
+              <mat-form-field>
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+                <mat-error
+                  *ngIf="
+                    flashcardGroup.controls['description'].hasError('minlength')
+                  "
+                  >Minimum 15 znaków</mat-error
+                >
+                <mat-error
+                  *ngIf="
+                    flashcardGroup.controls['description'].hasError('required')
+                  "
+                  >To pole jest wymagane</mat-error
+                >
+              </mat-form-field>
+            </div>
+            <div class="col d-flex justify-content-center">
+              <mat-form-field class="select__first">
+                <mat-label>Link with</mat-label>
+                <mat-select (selectionChange)="addBacklink($event.value)">
+                  <mat-option
+                    *ngFor="let flashcard of flashcards$ | async"
+                    [value]="flashcard"
+                    >{{ flashcard.title }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <mat-chip-list
+              *ngIf="backlinks && backlinks.length > 0"
+              class="row d-flex justify-content-center"
+            >
+              <p>Connect with:</p>
+              <mat-chip
+                *ngFor="let flashcard of backlinks"
+                class="col-12 d-flex justify-content-center chip-link"
+                (removed)="removeBacklink(flashcard)"
+                >{{ flashcard.title }}
+                <button matChipRemove>
+                  <mat-icon>cancel</mat-icon>
+                </button></mat-chip
+              >
+            </mat-chip-list>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-raised-button mat-dialog-close>ZAMKNIJ</button>
+  <button mat-raised-button color="primary" (click)="submitForm()">
+    Dodaj
+  </button>
+</mat-dialog-actions>

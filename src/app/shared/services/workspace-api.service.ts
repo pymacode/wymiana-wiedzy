@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReplaySubject } from 'rxjs';
-import { Workspace } from '../interfaces';
+import { Flashcard, Workspace } from '../interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -26,6 +26,19 @@ export class WorkspaceApiService {
           this.workspace.next(workspace);
         },
         error: () => this.router.navigate(['/app']),
+      });
+  }
+
+  public addFlashcardToWorkspace(workspace: Workspace) {
+    this.http
+      .put(`http://localhost:3000/workspaces/${workspace.id}`, workspace)
+      .subscribe({
+        next: () => {
+          console.log('Success');
+        },
+        error: (error) => {
+          console.log(error);
+        },
       });
   }
 
