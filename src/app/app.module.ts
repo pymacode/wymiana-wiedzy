@@ -27,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IconPenComponent } from './shared/icons/icon-pen/icon-pen.component';
 import { FiltersComponent } from './views/workspace/filters/filters.component';
 import { NetworkGraphComponent } from './views/network-graph/network-graph.component';
+import { IconGraphComponent } from './shared/icons/icon-graph/icon-graph.component';
 
 const routes: Routes = [
   {
@@ -59,6 +60,7 @@ const routes: Routes = [
     IconPenComponent,
     FiltersComponent,
     NetworkGraphComponent,
+    IconGraphComponent,
   ],
   imports: [
     BrowserModule,
