@@ -10,7 +10,7 @@ import { WorkspaceApiService } from 'src/app/shared/services/workspace-api.servi
 })
 export class WorkspaceComponent implements OnInit {
   public flashcards$ = this.workspaceService.workspace$.pipe(
-    tap((workspace) => console.log(workspace.flashcards))
+    tap((workspace) => workspace)
   );
 
   constructor(
