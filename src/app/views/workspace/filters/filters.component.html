@@ -1,10 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
+<div class="wrapper">
+  <div class="row d-flex align-items-center">
+    <div class="col-6">
+      <mat-chip-list>
+        <mat-chip
+          *ngFor="let activated of activeTags"
+          (removed)="removeTag(activated)"
+          >{{ activated
+          }}<button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button></mat-chip
+        >
+      </mat-chip-list>
+    </div>
+    <div class="col-6 d-flex justify-content-end">
+      <mat-form-field>
+        <mat-label>Szukaj po tagu</mat-label>
+        <mat-select (selectionChange)="activateTag($event.value)">
+          <mat-option *ngFor="let tag of tags" [value]="tag">{{
+            tag
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
       <mat-form-field>
         <mat-label>
           <mat-icon>search</mat-icon>
-          Search
+          Szukaj po nazwie
         </mat-label>
         <input matInput [formControl]="inputSearch" />
       </mat-form-field>

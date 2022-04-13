@@ -11,6 +11,9 @@ import { WorkspaceApiService } from 'src/app/shared/services/workspace-api.servi
 })
 export class FiltersComponent implements OnInit {
   inputSearch = new FormControl('');
+  selectFilter = new FormControl('');
+  tags = ['rxjs', 'angular', 'databases', 'react', 'java', 'spring'];
+  activeTags: string[] = [];
   constructor(
     private workspaceApi: WorkspaceApiService,
     private route: ActivatedRoute
@@ -18,12 +21,23 @@ export class FiltersComponent implements OnInit {
 
   ngOnInit(): void {
     this.inputSearch.valueChanges
-      .pipe(
-        debounceTime(500),
-        filter((value) => value.length >= 3)
-      )
+      .pipe(debounceTime(500))
       .subscribe((searchText) => {
         this.workspaceApi.searchByName(searchText);
       });
+  }
+
+  activateTag(tag: string) {
+    this.activeTags.push(tag);
+    this.tags.splice(this.findIndex(this.tags, tag), 1);
+  }
+
+  removeTag(tag: string) {
+    this.tags.push(tag);
+    this.activeTags.splice(this.findIndex(this.activeTags, tag), 1);
+  }
+
+  findIndex(arr: string[], element: string) {
+    return arr.findIndex((item) => item === element);
   }
 }
