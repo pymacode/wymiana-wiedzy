@@ -1,8 +1,8 @@
-<mat-form-field class="example-chip-list" appearance="fill">
+<mat-form-field class="example-chip-list" class="d-flex justify-content-center">
   <mat-label>Tags</mat-label>
   <mat-chip-list #chipList aria-label="Fruit selection">
     <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
-      {{ tag.name }}
+      {{ tag }}
       <button matChipRemove>
         <mat-icon>cancel</mat-icon>
       </button>

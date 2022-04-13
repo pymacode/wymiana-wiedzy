@@ -32,7 +32,6 @@ const routes: Routes = [
     component: ShellComponent,
     children: [
       { path: 'add-workspace', component: BlankComponent },
-      { path: 'add-flashcard', component: AddFlashcardComponent },
       {
         path: 'workspace/:id',
         component: WorkspaceComponent,
