@@ -25,6 +25,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IconPenComponent } from './shared/icons/icon-pen/icon-pen.component';
+import { NetworkGraphComponent } from './views/network-graph/network-graph.component';
 
 const routes: Routes = [
   {
@@ -55,6 +56,7 @@ const routes: Routes = [
     AddFlashcardComponent,
     ChipsComponent,
     IconPenComponent,
+    NetworkGraphComponent,
   ],
   imports: [
     BrowserModule,
