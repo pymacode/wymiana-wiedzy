@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { ReplaySubject } from 'rxjs';
+import { first, ReplaySubject } from 'rxjs';
 import { Flashcard, Workspace } from '../interfaces';
 
 @Injectable({
@@ -9,7 +9,12 @@ import { Flashcard, Workspace } from '../interfaces';
 })
 export class WorkspaceApiService {
   private workspace: ReplaySubject<Workspace> = new ReplaySubject<Workspace>(1);
-  constructor(private http: HttpClient, private router: Router) {}
+  private wholeWorkspace!: Workspace;
+  constructor(private http: HttpClient, private router: Router) {
+    this.workspace$
+      .pipe(first())
+      .subscribe((value) => (this.wholeWorkspace = value));
+  }
 
   public get workspace$() {
     return this.workspace.asObservable();
@@ -40,6 +45,14 @@ export class WorkspaceApiService {
           console.log(error);
         },
       });
+  }
+
+  public refreshAllFlashcards() {}
+
+  public searchByName(text: string) {
+    let currentWorkspace: Workspace;
+    currentWorkspace = this.wholeWorkspace;
+    this.workspace.next(currentWorkspace!);
   }
 
   private generatePreviewUrl(url: string): string {

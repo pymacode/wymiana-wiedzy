@@ -25,6 +25,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IconPenComponent } from './shared/icons/icon-pen/icon-pen.component';
+import { FiltersComponent } from './views/workspace/filters/filters.component';
 import { NetworkGraphComponent } from './views/network-graph/network-graph.component';
 import { IconGraphComponent } from './shared/icons/icon-graph/icon-graph.component';
 
@@ -38,6 +39,7 @@ const routes: Routes = [
         path: 'workspace/:id',
         component: WorkspaceComponent,
       },
+      { path: 'graph/:id', component: NetworkGraphComponent },
     ],
   },
   { path: '**', redirectTo: '/app' },
@@ -57,6 +59,7 @@ const routes: Routes = [
     AddFlashcardComponent,
     ChipsComponent,
     IconPenComponent,
+    FiltersComponent,
     NetworkGraphComponent,
     IconGraphComponent,
   ],

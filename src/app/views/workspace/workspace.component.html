@@ -1,9 +1,6 @@
 <div class="filters">
-  <h1>Filters here</h1>
+  <app-filters></app-filters>
 </div>
-
-<app-network-graph></app-network-graph>
-
 <div class="container-fluid mb-5">
   <div
     *ngIf="flashcards$ | async as workspace"
@@ -20,4 +17,3 @@
     </div>
   </div>
 </div>
-<router-outlet></router-outlet>
