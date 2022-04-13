@@ -26,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IconPenComponent } from './shared/icons/icon-pen/icon-pen.component';
 import { NetworkGraphComponent } from './views/network-graph/network-graph.component';
+import { IconGraphComponent } from './shared/icons/icon-graph/icon-graph.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,7 @@ const routes: Routes = [
     ChipsComponent,
     IconPenComponent,
     NetworkGraphComponent,
+    IconGraphComponent,
   ],
   imports: [
     BrowserModule,
